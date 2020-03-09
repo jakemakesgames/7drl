@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 7575567225427562082}
   - component: {fileID: 7575567225427562081}
   - component: {fileID: 7575567225427562080}
+  - component: {fileID: 1789313292}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -273,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0e5daaf5d531e04294a67fae532e9fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 10
   rb2d: {fileID: 0}
   gunArm: {fileID: 7575567224909586818}
   anim: {fileID: 0}
@@ -327,6 +328,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &1789313292
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7575567225427562093}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ebf26a69608bbed4581e1095d5e12a6b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7575567225919411454
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -38,14 +39,14 @@ public class EnemyController : MonoBehaviour
         moveDirection.Normalize();
         rb2d.velocity = moveDirection * moveSpeed;
 
-        //if (moveDirection != Vector3.zero)
-        //{
-        //    anim.SetBool("isMoving", true);
-        //}
-        //else
-        //{
-        //    anim.SetBool("isMoving", false);
-        //}
+        if (moveDirection != Vector3.zero)
+        {
+            anim.SetBool("isMoving", true);
+        }
+        else
+        {
+            anim.SetBool("isMoving", false);
+        }
     }
 
     public void DamageEnemy(int damage)

@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         cam = Camera.main;
     }
 
@@ -84,14 +85,14 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //if (moveInput != Vector2.zero)
-        //{
-        //    anim.SetBool("isMoving", true);
-        //}
-        //else
-        //{
-        //    anim.SetBool("isMoving", false);
-        //}
+        if (moveInput != Vector2.zero)
+        {
+            anim.SetBool("isMoving", true);
+        }
+        else
+        {
+            anim.SetBool("isMoving", false);
+        }
 
     }
 }

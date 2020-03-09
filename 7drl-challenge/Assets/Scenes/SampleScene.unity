@@ -296,6 +296,7 @@ GameObject:
   - component: {fileID: 1418921973}
   - component: {fileID: 1418921972}
   - component: {fileID: 1418921971}
+  - component: {fileID: 1418921974}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -311,7 +312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418921969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.63, y: 0, z: 0}
+  m_LocalPosition: {x: 18.13, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 806489671}
@@ -382,6 +383,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &1418921974
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418921969}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fbee3a4c843d03742be9df74861fff6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7575567226054725482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -389,15 +409,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7575567225427562082, guid: 04f81fd315089eb45b0bc57915276ea0,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 7575567225427562083, guid: 04f81fd315089eb45b0bc57915276ea0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -8.24
       objectReference: {fileID: 0}
     - target: {fileID: 7575567225427562083, guid: 04f81fd315089eb45b0bc57915276ea0,
         type: 3}
@@ -453,6 +468,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7575567225427562093, guid: 04f81fd315089eb45b0bc57915276ea0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04f81fd315089eb45b0bc57915276ea0, type: 3}
