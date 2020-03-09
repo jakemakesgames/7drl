@@ -173,7 +173,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 12.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -229,7 +229,7 @@ Transform:
   m_GameObject: {fileID: 806489670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1418921970}
   m_RootOrder: 0
@@ -272,8 +272,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c7af058c536ef9d41ae4a2a52aa13104, type: 3}
-  m_Color: {r: 0.15683451, g: 0.3301887, b: 0.010902463, a: 1}
+  m_Sprite: {fileID: 8365336199394505449, guid: df20398d31d57d84eb18e54df0339f38,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -297,7 +298,7 @@ GameObject:
   - component: {fileID: 1418921971}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -330,8 +331,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 1418921973}
-  moveSpeed: 2.5
-  rangeToChasePlayer: 7
+  moveSpeed: 5
+  rangeToChasePlayer: 10
+  anim: {fileID: 0}
+  health: 10
 --- !u!61 &1418921972
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -345,7 +348,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.014612913, y: 0.007306099}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -356,7 +359,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.0458035, y: 3.8202877}
   m_EdgeRadius: 0
 --- !u!50 &1418921973
 Rigidbody2D:
@@ -386,6 +389,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7575567225427562082, guid: 04f81fd315089eb45b0bc57915276ea0,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7575567225427562083, guid: 04f81fd315089eb45b0bc57915276ea0,
         type: 3}
       propertyPath: m_LocalPosition.x

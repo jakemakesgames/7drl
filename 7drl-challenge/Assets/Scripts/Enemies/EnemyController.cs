@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour
 
     public Animator anim;
 
+    public int health = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,5 +46,20 @@ public class EnemyController : MonoBehaviour
         //{
         //    anim.SetBool("isMoving", false);
         //}
+    }
+
+    public void DamageEnemy(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }

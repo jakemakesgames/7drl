@@ -11,6 +11,8 @@ public class PlayerBullet : MonoBehaviour
 
     public float lifeTime;
 
+    public int damage = 2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +26,15 @@ public class PlayerBullet : MonoBehaviour
         rb2d.velocity = transform.right * speed;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Destroy(gameObject);
+
+        if (other.tag == "Enemy")
+        {
+            other.GetComponent<EnemyController>().DamageEnemy(damage);
+        }
+        
     }
 
     public void DestroyBullet()
