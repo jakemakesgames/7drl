@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816540112663347735}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.645, y: 0.056, z: 0}
+  m_LocalPosition: {x: 0.709, y: 0.056, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7575567224909586818}
@@ -169,7 +169,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7575567225427562093}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -190,12 +190,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0e5daaf5d531e04294a67fae532e9fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 5
   rb2d: {fileID: 0}
   gunArm: {fileID: 7575567224909586818}
   anim: {fileID: 0}
-  bullet: {fileID: 0}
-  firePoint: {fileID: 0}
+  bullet: {fileID: 7323532784816868248, guid: 71d91146ff572284483a2ef381808324, type: 3}
+  firePoint: {fileID: 5225247049807446085}
+  timeBtwnShots: 0.25
 --- !u!61 &7575567225427562081
 BoxCollider2D:
   m_ObjectHideFlags: 0

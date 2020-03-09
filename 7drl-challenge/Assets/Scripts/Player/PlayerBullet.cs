@@ -9,9 +9,12 @@ public class PlayerBullet : MonoBehaviour
     public float speed = 7.5f;
     Rigidbody2D rb2d;
 
+    public float lifeTime;
+
     // Start is called before the first frame update
     void Start()
     {
+        Invoke("DestroyBullet", lifeTime);
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -25,4 +28,11 @@ public class PlayerBullet : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void DestroyBullet()
+    {
+        Destroy(gameObject);
+    }
+
+    
 }

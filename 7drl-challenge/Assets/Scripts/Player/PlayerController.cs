@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     public float moveSpeed;
     private Vector2 moveInput;
     public Rigidbody2D rb2d;
@@ -15,6 +17,14 @@ public class PlayerController : MonoBehaviour
 
     public GameObject bullet;
     public Transform firePoint;
+
+    public float timeBtwnShots;
+    private float shotCounter;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +70,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Instantiate(bullet, firePoint.position, firePoint.rotation);
+            shotCounter = timeBtwnShots;
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            shotCounter -= Time.deltaTime;
+
+            if (shotCounter <= 0)
+            {
+                Instantiate(bullet, firePoint.position, firePoint.rotation);
+                shotCounter = timeBtwnShots;
+            }
         }
 
         //if (moveInput != Vector2.zero)
@@ -71,10 +93,5 @@ public class PlayerController : MonoBehaviour
         //    anim.SetBool("isMoving", false);
         //}
 
-    }
-
-    public void Shoot()
-    {
-        
     }
 }
