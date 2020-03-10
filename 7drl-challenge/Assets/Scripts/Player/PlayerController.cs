@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public float timeBtwnShots;
     private float shotCounter;
 
+    public SpriteRenderer bodyRenderer;
+
     private void Awake()
     {
         instance = this;

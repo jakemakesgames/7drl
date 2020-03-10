@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (body.isVisible)
+        if (body.isVisible && PlayerController.instance.gameObject.activeInHierarchy)
         {
             if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) < rangeToChasePlayer)
             {
@@ -71,6 +71,10 @@ public class EnemyController : MonoBehaviour
             {
                 anim.SetBool("isMoving", false);
             }
+        }
+        else
+        {
+            rb2d.velocity = Vector2.zero;
         }
 
     }
