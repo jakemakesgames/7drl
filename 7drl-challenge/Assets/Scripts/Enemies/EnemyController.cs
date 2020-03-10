@@ -16,6 +16,17 @@ public class EnemyController : MonoBehaviour
 
     public int health = 10;
 
+    public bool shouldShoot;
+    public GameObject bullet;
+    public Transform firePoint;
+
+    public float fireRate;
+    private float fireCounter;
+
+    public float shootRange;
+
+    public SpriteRenderer body;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,27 +37,42 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) < rangeToChasePlayer)
+        if (body.isVisible)
         {
-            // start moving towards player
-            moveDirection = PlayerController.instance.transform.position - transform.position;
-        }
-        else
-        {
-            moveDirection = Vector3.zero;
+            if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) < rangeToChasePlayer)
+            {
+                // start moving towards player
+                moveDirection = PlayerController.instance.transform.position - transform.position;
+            }
+            else
+            {
+                moveDirection = Vector3.zero;
+            }
+
+            moveDirection.Normalize();
+            rb2d.velocity = moveDirection * moveSpeed;
+
+            if (shouldShoot && Vector3.Distance(transform.position, PlayerController.instance.transform.position) < shootRange)
+            {
+                fireCounter -= Time.deltaTime;
+
+                if (fireCounter <= 0)
+                {
+                    fireCounter = fireRate;
+                    Instantiate(bullet, firePoint.position, transform.rotation);
+                }
+            }
+
+            if (moveDirection != Vector3.zero)
+            {
+                anim.SetBool("isMoving", true);
+            }
+            else
+            {
+                anim.SetBool("isMoving", false);
+            }
         }
 
-        moveDirection.Normalize();
-        rb2d.velocity = moveDirection * moveSpeed;
-
-        if (moveDirection != Vector3.zero)
-        {
-            anim.SetBool("isMoving", true);
-        }
-        else
-        {
-            anim.SetBool("isMoving", false);
-        }
     }
 
     public void DamageEnemy(int damage)
