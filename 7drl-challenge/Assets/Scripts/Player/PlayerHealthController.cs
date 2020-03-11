@@ -61,4 +61,11 @@ public class PlayerHealthController : MonoBehaviour
             UIController.instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
         }
     }
+
+    public void MakeInvincible(float length)
+    {
+        invincCount = length;
+        PlayerController.instance.bodyRenderer.color = new Color(PlayerController.instance.bodyRenderer.color.r, PlayerController.instance.bodyRenderer.color.g, PlayerController.instance.bodyRenderer.color.b, .5f);
+
+    }
 }

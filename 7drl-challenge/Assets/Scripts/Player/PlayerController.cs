@@ -7,21 +7,35 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
-
-    public float moveSpeed;
-    private Vector2 moveInput;
-    public Rigidbody2D rb2d;
-    public Transform gunArm;
+    
     private Camera cam;
     public Animator anim;
 
+    public SpriteRenderer bodyRenderer;
+
+    // movement
+    public float moveSpeed;
+    private Vector2 moveInput;
+    public Rigidbody2D rb2d;
+
+    // dashing
+    private float activeMoveSpeed;
+    public float dashSpeed;
+    public float dashLength = .5f;
+    public float dashCooldown = 1f;
+
+    [HideInInspector] public float dashCounter;
+    private float dashCoolCounter;
+
+    public float dashInvincibility = .5f;
+
+    // shooting
+    public Transform gunArm;
+
     public GameObject bullet;
     public Transform firePoint;
-
     public float timeBtwnShots;
     private float shotCounter;
-
-    public SpriteRenderer bodyRenderer;
 
     private void Awake()
     {
@@ -31,9 +45,12 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam = Camera.main;
+
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        cam = Camera.main;
+        
+        activeMoveSpeed = moveSpeed;
     }
 
     // Update is called once per frame
@@ -46,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
         //transform.position += new Vector3(moveInput.x * Time.deltaTime * moveSpeed, moveInput.y * Time.deltaTime * moveSpeed, 0f);
 
-        rb2d.velocity = moveInput * moveSpeed;
+        rb2d.velocity = moveInput * activeMoveSpeed;
 
         Vector3 mousePos = Input.mousePosition;
         Vector3 screenPoint = cam.WorldToScreenPoint(transform.localPosition);
@@ -85,6 +102,35 @@ public class PlayerController : MonoBehaviour
                 Instantiate(bullet, firePoint.position, firePoint.rotation);
                 shotCounter = timeBtwnShots;
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (dashCoolCounter <= 0 && dashCounter <= 0)
+            {
+                // dash
+                activeMoveSpeed = dashSpeed;
+                dashCounter = dashLength;
+
+                anim.SetTrigger("dash");
+
+                PlayerHealthController.instance.MakeInvincible(dashInvincibility);
+            }
+        }
+
+        if (dashCounter > 0)
+        {
+            dashCounter -= Time.deltaTime;
+            if (dashCounter <= 0)
+            {
+                activeMoveSpeed = moveSpeed;
+                dashCoolCounter = dashCooldown;
+            }
+        }
+
+        if (dashCoolCounter > 0)
+        {
+            dashCoolCounter -= Time.deltaTime;
         }
 
         if (moveInput != Vector2.zero)
