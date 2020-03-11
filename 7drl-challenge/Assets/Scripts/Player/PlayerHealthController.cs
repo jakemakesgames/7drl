@@ -55,6 +55,8 @@ public class PlayerHealthController : MonoBehaviour
             {
                 PlayerController.instance.gameObject.SetActive(false);
                 UIController.instance.deathScreen.SetActive(true);
+
+                AudioController.instance.PlayGameOver();
             }
 
             UIController.instance.healthSlider.value = currentHealth;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2560826117829627473}
   - component: {fileID: 2560826117829627502}
   - component: {fileID: 2560826117829627475}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,6 +97,10 @@ MonoBehaviour:
   brokenPieces:
   - {fileID: 7430358873144736797, guid: 135dcd5b2d6845846aaa2608f2b36502, type: 3}
   maxPieces: 5
+  shouldDropItem: 0
+  itemsToDrop: []
+  itemDropPercent: 0
+  sfxIndex: 0
 --- !u!61 &2560826117829627475
 BoxCollider2D:
   m_ObjectHideFlags: 0
